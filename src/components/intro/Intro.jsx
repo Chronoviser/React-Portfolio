@@ -2,17 +2,21 @@ import './Intro.scss';
 import { init } from 'ityped';
 import { useEffect, useRef } from 'react';
 
-function Intro() {
+function Intro({ data }) {
 
     const professionRef = useRef();
 
     useEffect(() => {
-        init(professionRef.current, {
-            showCursor: true,
-            backDelay: 1000,
-            strings: ["Android Apps Developer", "Web Apps Developer", "Desktop Apps Developer", "Startup Enthusiast"]
-        })
-    }, [])
+
+        if (data.length > 0) {
+            init(professionRef.current, {
+                showCursor: true,
+                backDelay: 1000,
+                strings: [...data]
+            })
+        }
+
+    }, [data])
 
     return (
         <div className="intro" id="intro">

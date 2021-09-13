@@ -1,8 +1,7 @@
 import './Projects.scss';
-import { data } from '../../constants/Projects-Data.js';
 import { useState } from 'react';
 
-function Projects() {
+function Projects({ data }) {
 
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -16,8 +15,8 @@ function Projects() {
         <div className="projects" id="projects">
             <div className="slider" style={{ transform: `translate(-${currentSlide * 100}vw)` }}>
                 {
-                    data.map((d) => (
-                        <div className="container">
+                    data.map((d, _) => (
+                        <div className="container" key={_}>
                             <div className="item">
                                 <div className="left">
                                     <div className="leftContainer">
